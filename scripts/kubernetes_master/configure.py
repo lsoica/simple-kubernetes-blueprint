@@ -160,11 +160,3 @@ if __name__ == '__main__':
     setup_secrets(split_master_port, bootstrap_token, bootstrap_hash)
 
     configure_admin_conf()
-    execute_command('kubectl apply -f https://git.io/weave-kube-1.6')
-
-    # Install weave-related utils
-    execute_command('sudo curl -L git.io/weave -o /usr/local/bin/weave')
-    execute_command('sudo chmod a+x /usr/local/bin/weave')
-    execute_command('sudo curl -L git.io/scope -o /usr/local/bin/scope')
-    execute_command('sudo chmod a+x /usr/local/bin/scope')
-    execute_command('/usr/local/bin/scope launch')
