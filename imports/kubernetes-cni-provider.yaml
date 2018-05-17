@@ -12,7 +12,7 @@ inputs:
     default: weave.yaml
 
   kubernetes_cni_blueprint_archive:
-    default: https://codeload.github.com/cloudify-incubator/kubernetes-cni-provider/zip/add-support-for-multiple-cni-providers
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/kubernetes-cni-provider-add-support-for-multiple-cni-providers.zip
 
 node_templates:
 

@@ -11,13 +11,13 @@ inputs:
     default: {}
 
   cfy_autoscale_url:
-    default: https://github.com/cloudify-incubator/cloudify-kubernetes-provider/releases/download/0.0.0%2B16/cfy-autoscale
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/cfy-autoscale
 
   cfy_kubernetes_url:
-    default: https://github.com/cloudify-incubator/cloudify-kubernetes-provider/releases/download/0.0.0%2B16/cfy-kubernetes
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/cfy-kubernetes
 
   cfy_go_url:
-    default: https://github.com/cloudify-incubator/cloudify-kubernetes-provider/releases/download/0.0.0%2B16/cfy-go
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/cfy-go
 
 node_types:
 

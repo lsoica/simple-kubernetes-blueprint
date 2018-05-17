@@ -34,10 +34,10 @@ inputs:
     default: { get_attribute: [ kubernetes_master_ip, aws_resource_id ] }
 
   ks_node_dep_archive:
-    default: https://codeload.github.com/cloudify-incubator/kubernetes-node-blueprints/zip/master
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/kubernetes-node-blueprints-master.zip
 
   ks_load_dep_archive:
-    default: https://codeload.github.com/cloudify-incubator/kubernetes-lb-blueprints/zip/master
+    default: https://s3.us-east-2.amazonaws.com/aws-cloudify-blueprint/kubernetes-lb-blueprints-master.zip
 
 dsl_definitions:
 
