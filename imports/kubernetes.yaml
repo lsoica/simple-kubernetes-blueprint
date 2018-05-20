@@ -116,19 +116,19 @@ node_templates:
 outputs:
 
   kubernetes_cluster_bootstrap_token:
-    value: { get_attribute: [ kubernetes_master, bootstrap_token ] }
+    value: { get_attribute: [ kubernetes_setup_master, bootstrap_token ] }
 
   kubernetes_cluster_bootstrap_hash:
-    value: { get_attribute: [ kubernetes_master, bootstrap_hash ] }
+    value: { get_attribute: [ kubernetes_setup_master, bootstrap_hash ] }
 
   kubernetes_cluster_master_ip:
-    value: { get_attribute: [ kubernetes_master, master_ip ] }
+    value: { get_attribute: [ kubernetes_setup_master, master_ip ] }
 
   kubernetes-admin_client_certificate_data:
-    value: { get_attribute: [ kubernetes_master, kubernetes-admin_client_certificate_data ] }
+    value: { get_attribute: [ kubernetes_setup_master, kubernetes-admin_client_certificate_data ] }
 
   kubernetes-admin_client_key_data:
-    value: { get_attribute: [ kubernetes_master, kubernetes-admin_client_key_data ] }
+    value: { get_attribute: [ kubernetes_setup_master, kubernetes-admin_client_key_data ] }
 
   kubernetes_certificate_authority_data:
-    value: { get_attribute: [ kubernetes_master, kubernetes_certificate_authority_data ] }
+    value: { get_attribute: [ kubernetes_setup_master, kubernetes_certificate_authority_data ] }
