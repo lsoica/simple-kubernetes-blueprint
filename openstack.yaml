@@ -32,10 +32,10 @@ inputs:
     default: { get_attribute: [ kubernetes_master_ip, floating_ip_address ] }
 
   ks_node_dep_archive:
-    default: https://github.com/cloudify-incubator/kubernetes-node-blueprints/archive/master.zip
+    default: https://github.com/lsoica/kubernetes-node-blueprints/archive/1.0.zip
 
   ks_load_dep_archive:
-    default: https://github.com/cloudify-incubator/kubernetes-lb-blueprints/archive/master.zip
+    default: https://github.com/lsoica/kubernetes-lb-blueprints/archive/1.0.zip
 
 
 dsl_definitions:
@@ -43,9 +43,12 @@ dsl_definitions:
   openstack_config: &openstack_config
     username: { get_secret: keystone_username }
     password: { get_secret: keystone_password }
-    tenant_name: { get_secret: keystone_tenant_name }
     auth_url: { get_secret: keystone_url }
     region: { get_secret: region }
+    project_name: { get_secret: keystone_tenant_name }
+    user_domain_name: { get_secret: user_domain_name }
+    project_domain_name: { get_secret: project_domain_name }
+
 
 node_templates:
 
