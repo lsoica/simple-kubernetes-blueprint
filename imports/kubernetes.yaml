@@ -229,8 +229,7 @@ policy_types:
         description: the time to wait before evaluating again after a scale
         default: 60
 
-groups: {}
-
+groups:
   scale_up_group:
     members: [kubernetes_node_host]
     policies:
@@ -251,7 +250,6 @@ groups: {}
               workflow_parameters:
                 delta: 1
                 scalable_entity_name: kubernetes_node_host
-
   scale_down_group:
     members: [kubernetes_node_host]
     policies:
@@ -272,7 +270,6 @@ groups: {}
               workflow_parameters:
                 delta: 1
                 scalable_entity_name: kubernetes_node_host
-
   heal_group:
     members: [kubernetes_node_host]
     policies:
