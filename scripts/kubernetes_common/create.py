@@ -76,20 +76,28 @@ def execute_command(command, extra_args=None):
     return output
 
 
-def download_service(service_name):
+def download_service(service_name, release_base_url=None):
     service_path = "/usr/bin/" + service_name
     if not os.path.isfile(service_path):
         try:
             cfy_binary = ctx.download_resource(
                 'resources/{}'.format(service_name))
         except HttpException:
-            raise NonRecoverableError(
-                '{} binary not in resources.'.format(service_name))
+            if not release_base_url:
+                raise NonRecoverableError(
+                    '{} binary not in resources.'.format(service_name))
+            ctx.logger.debug(
+                '{} not found. '
+                'Pulling from alternate location.'.format(service_name))
+            cfy_binary = download_binary(release_base_url)
         ctx.logger.debug('{} downloaded.'.format(service_name))
-        execute_command(['sudo', 'cp', cfy_binary, service_path])
+        if execute_command(['sudo', 'cp', cfy_binary, service_path]) is False:
+            raise NonRecoverableError("Can't copy {}.".format(service_path))
     # fix file attributes
-    execute_command(['sudo', 'chmod', '555', service_path])
-    execute_command(['sudo', 'chown', 'root:root', service_path])
+    if execute_command(['sudo', 'chmod', '555', service_path]) is False:
+        raise NonRecoverableError("Can't chmod {}.".format(service_path))
+    if execute_command(['sudo', 'chown', 'root:root', service_path]) is False:
+        raise NonRecoverableError("Can't chown {}.".format(service_path))
     ctx.logger.debug('{} attributes fixed'.format(service_name))
 
 
