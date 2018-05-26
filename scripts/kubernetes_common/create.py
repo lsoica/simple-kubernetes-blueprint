@@ -295,7 +295,8 @@ if __name__ == '__main__':
 
     # download mount tools
     if full_install != "loadbalancer":
-        download_service("cfy-go")
+        cfy_go_url = inputs.get('cfy_go_url')
+        download_service("cfy-go", cfy_go_url)
         output = execute_command([
             '/usr/bin/cfy-go', 'status', 'diag',
             '-deployment', ctx.deployment.id,
