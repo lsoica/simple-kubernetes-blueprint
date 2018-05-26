@@ -22,6 +22,7 @@ import subprocess
 import tempfile
 import os
 import os.path
+import urllib
 from cloudify import ctx
 from cloudify.state import ctx_parameters as inputs
 from cloudify.exceptions import (
