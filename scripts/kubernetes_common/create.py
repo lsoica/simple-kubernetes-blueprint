@@ -246,6 +246,12 @@ if __name__ == '__main__':
         _, temp_mount_file = tempfile.mkstemp()
 
         with open(temp_mount_file, 'w') as outfile:
+            cfy_host_full = cfy_host if not cfy_ssl_port else (
+                    "https://" + cfy_host + ":" + str(cfy_ssl_port)
+            )
+            agent_file = "/root" if agent_user == "root" else (
+                "/home/" + agent_user
+            )
             outfile.write(MOUNT.format(
                 ctx.deployment.id,
                 ctx.instance.id,
@@ -312,6 +318,12 @@ if __name__ == '__main__':
     if full_install != "loadbalancer":
         cfy_go_url = inputs.get('cfy_go_url')
         download_service("cfy-go", cfy_go_url)
+        cfy_host_full = cfy_host if not cfy_ssl_port else (
+                "https://" + cfy_host + ":" + str(cfy_ssl_port)
+        )
+        agent_file = "/root" if agent_user == "root" else (
+            "/home/" + agent_user
+        )
         output = execute_command([
             '/usr/bin/cfy-go', 'status', 'diag',
             '-deployment', ctx.deployment.id,
