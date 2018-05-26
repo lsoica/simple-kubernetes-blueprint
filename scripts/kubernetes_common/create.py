@@ -75,6 +75,13 @@ def execute_command(command, extra_args=None):
 
     return output
 
+def download_binary(_url):
+    _, filepath = tempfile.mkstemp()
+    f = urllib.urlopen(_url)
+    fh = open(filepath, 'wb')
+    fh.write(f.read())
+    fh.close()
+    return filepath
 
 def download_service(service_name, release_base_url=None):
     service_path = "/usr/bin/" + service_name
